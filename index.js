@@ -51,7 +51,7 @@ module.exports = function (opt) {
         cb(null, file);
     }
 
-    function endStream() {
+    function endStream(cb) {
 
         files.map(function (file) {
             var name = path.basename(file.path).replace(/\.js$/,'');
@@ -100,6 +100,8 @@ module.exports = function (opt) {
 
         req.write(JSON.stringify(data));
         req.end();
+
+        cb();
     }
 
     return through.obj(bufferContents, endStream);
