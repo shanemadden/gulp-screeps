@@ -1,0 +1,33 @@
+{
+  "name": "gulp-screeps",
+  "version": "1.0.0",
+  "description": "A Gulp plugin for commiting code to your Screeps account",
+  "license": "MIT",
+  "repository": "git://github.com/pcmulder/gulp-screeps",
+  "author": {
+    "name": "Patrick Mulder",
+    "email": "pcmulder89@gmail.com"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "gulpplugin",
+    "screeps"
+  ],
+  "dependencies": {
+    "gulp-util": "^3.0.6",
+    "through2": "^2.0.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.8.0"
+  },
+  "bugs": {
+    "url": "https://github.com/pcmulder/gulp-screeps/issues",
+    "email": "pcmulder89@gmail.com"
+  },
+  "homepage": "https://github.com/timhuijgen/sockjs-wrap"
+}

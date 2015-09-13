@@ -1,0 +1,42 @@
+# gulp-screeps
+
+A Gulp plugin for commiting code to your Screeps account.
+The plugin is based on the [grunt equivalent](https://github.com/screeps/grunt-screeps).
+
+## Usage
+
+**gulpfile.js:**
+```js
+var screeps = require('gulp-screeps');
+ 
+gulp.task('screeps', function() {
+  gulp.src('*.js')
+    .pipe(screeps(options);
+});
+```
+
+If you don't want to commit your account information, require an other module and export an option object. Don't forget to add the file to your **.gitignore**.
+  
+**gulpfile.js:**
+```js
+var screeps = require('gulp-screeps');
+var credentials = require('./credentials.js');
+
+gulp.task('screeps', function() {
+  gulp.src('*.js')
+    .pipe(screeps(credentials);
+...
+```
+**credentials.js:**
+```js
+module.exports = {
+    email: 'EMAIL',
+    password: 'PASSWORD',
+    branch: 'default'
+};
+```
+### Options 
+- email - the email of your account
+- password - the password of your account
+- branch (optional) - the branch you wish to commit the code to
+
