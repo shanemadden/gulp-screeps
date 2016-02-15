@@ -61,7 +61,7 @@ module.exports = function (opt) {
         var req = https.request({
                 hostname: 'screeps.com',
                 port: 443,
-                path: '/api/user/code',
+                path: opt.ptr ? '/ptr/api/user/code' : '/api/user/code',
                 method: 'POST',
                 auth: opt.email + ':' + opt.password,
                 headers: {

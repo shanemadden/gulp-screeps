@@ -32,11 +32,12 @@ gulp.task('screeps', function() {
 module.exports = {
     email: 'EMAIL',
     password: 'PASSWORD',
-    branch: 'default'
+    branch: 'default',
+    ptr: false
 };
 ```
 ### Options 
 - email - the email of your account
 - password - the password of your account
 - branch (optional) - the branch you wish to commit the code to
-
+- ptr (optional) - use [Public Test Realm](http://support.screeps.com/hc/en-us/articles/205999532-Public-Test-Realm)

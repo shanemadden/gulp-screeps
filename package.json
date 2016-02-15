@@ -1,6 +1,6 @@
 {
   "name": "gulp-screeps",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Gulp plugin for commiting code to your Screeps account",
   "license": "MIT",
   "repository": "git://github.com/pcmulder/gulp-screeps",
