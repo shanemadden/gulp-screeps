@@ -11,7 +11,7 @@ var screeps = require('gulp-screeps');
  
 gulp.task('screeps', function() {
   gulp.src('*.js')
-    .pipe(screeps(options);
+    .pipe(screeps(options));
 });
 ```
 
@@ -24,7 +24,7 @@ var credentials = require('./credentials.js');
 
 gulp.task('screeps', function() {
   gulp.src('*.js')
-    .pipe(screeps(credentials);
+    .pipe(screeps(credentials));
 ...
 ```
 **credentials.js:**
