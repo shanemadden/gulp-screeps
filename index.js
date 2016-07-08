@@ -48,7 +48,7 @@ module.exports = function (opt) {
 
         files.push(file);
 
-        cb(null, file);
+        cb();
     }
 
     function endStream(cb) {
