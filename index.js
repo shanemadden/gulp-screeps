@@ -10,6 +10,7 @@
 
 var through = require('through2'),
     gutil = require('gulp-util'),
+    http = require('http'),
     https = require('https'),
     util = require('util'),
     path = require('path'),
@@ -24,6 +25,18 @@ module.exports = function (opt) {
 
     var files = [];
     var modules = {};
+
+    if (typeof opt.host !== 'string'){
+        opt.host = 'screeps.com';
+    }
+    
+    if (typeof opt.port !== 'number'){
+        opt.port = 443;
+    }
+
+    if (typeof opt.secure !== 'boolean'){
+        opt.secure = opt.port == 443;
+    }
 
     if (typeof opt.email !== 'string' || typeof opt.password !== 'string') {
         throw new PluginError(PLUGIN_NAME, 'Please provide account information');
@@ -45,10 +58,9 @@ module.exports = function (opt) {
             cb();
             return;
         }
-
         files.push(file);
 
-        cb(null, file);
+        cb()
     }
 
     function endStream(cb) {
@@ -58,9 +70,10 @@ module.exports = function (opt) {
             modules[name] = file.contents.toString('utf-8');
         });
 
-        var req = https.request({
-                hostname: 'screeps.com',
-                port: 443,
+        var request = (opt.secure?https:http).request
+        var req = request({
+                hostname: opt.host,
+                port: opt.port,
                 path: opt.ptr ? '/ptr/api/user/code' : '/api/user/code',
                 method: 'POST',
                 auth: opt.email + ':' + opt.password,
@@ -84,6 +97,9 @@ module.exports = function (opt) {
                         if (opt.branch) {
                             msg += ' branch "' + opt.branch + '"';
                         }
+                        if (opt.host) {
+                            msg += ' on server "' + opt.host + '"';
+                        }
                         msg += '.';
                         gutil.log(msg);
                     }
@@ -92,7 +108,6 @@ module.exports = function (opt) {
                     }
                 });
             });
-
         var data = {
             branch: opt.branch,
             modules: modules
