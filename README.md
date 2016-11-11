@@ -33,7 +33,10 @@ module.exports = {
     email: 'EMAIL',
     password: 'PASSWORD',
     branch: 'default',
-    ptr: false
+    ptr: false,
+    host: 'someprivateserver.com',
+    port: 9000,
+    secure: false
 };
 ```
 ### Options 
@@ -41,3 +44,6 @@ module.exports = {
 - password - the password of your account
 - branch (optional) - the branch you wish to commit the code to
 - ptr (optional) - use [Public Test Realm](http://support.screeps.com/hc/en-us/articles/205999532-Public-Test-Realm)
+- host (optional) - the url of the host
+- port (optional) - the port of the host
+- secure (optional) - if the host is using https instead of http
