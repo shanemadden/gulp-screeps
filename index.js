@@ -80,7 +80,7 @@ module.exports = function (opt) {
                 res.on('end', function () {
                     data = JSON.parse(data);
                     if (data.ok) {
-                        var msg = 'Commited to Screeps account "' + opt.email + '"';
+                        var msg = 'Committed to Screeps account "' + opt.email + '"';
                         if (opt.branch) {
                             msg += ' branch "' + opt.branch + '"';
                         }
@@ -88,7 +88,7 @@ module.exports = function (opt) {
                         gutil.log(msg);
                     }
                     else {
-                        gutil.log('Error while commiting to Screeps: ' + util.inspect(data));
+                        gutil.log('Error while committing to Screeps: ' + util.inspect(data));
                     }
                 });
             });
