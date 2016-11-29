@@ -7,6 +7,7 @@ The plugin is based on the [grunt equivalent](https://github.com/screeps/grunt-s
 
 **gulpfile.js:**
 ```js
+var gulp = require('gulp');
 var screeps = require('gulp-screeps');
  
 gulp.task('screeps', function() {
@@ -19,6 +20,7 @@ If you don't want to commit your account information, require an other module an
   
 **gulpfile.js:**
 ```js
+var gulp = require('gulp');
 var screeps = require('gulp-screeps');
 var credentials = require('./credentials.js');
 
