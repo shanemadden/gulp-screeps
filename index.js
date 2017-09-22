@@ -102,11 +102,15 @@ module.exports = function (opt) {
                         }
                         msg += '.';
                         gutil.log(msg);
+                        cb();
                     }
                     else {
                         gutil.log('Error while committing to Screeps: ' + util.inspect(data));
+                        cb('Error while committing to Screeps: ' + util.inspect(data));
                     }
                 });
+
+                res.on('error', cb);
             });
 
         var data = {
@@ -116,8 +120,6 @@ module.exports = function (opt) {
 
         req.write(JSON.stringify(data));
         req.end();
-
-        cb();
     }
 
     return through.obj(bufferContents, endStream);
