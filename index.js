@@ -9,14 +9,13 @@
 'use strict';
 
 var through = require('through2'),
-    gutil = require('gulp-util'),
+    PluginError = require('plugin-error'),
+    log = require('fancy-log'),
     http = require('http'),
     https = require('https'),
     util = require('util'),
     path = require('path'),
-    fs = require("fs");
-
-var PluginError = gutil.PluginError;
+    fs = require('fs');
 
 var PLUGIN_NAME = 'gulp-screeps';
 
@@ -109,11 +108,11 @@ module.exports = function (opt) {
                             msg += ' on server "' + opt.host + '"';
                         }
                         msg += '.';
-                        gutil.log(msg);
+                        log(msg);
                         cb();
                     }
                     else {
-                        gutil.log('Error while committing to Screeps: ' + util.inspect(data));
+                        log('Error while committing to Screeps: ' + util.inspect(data));
                         cb('Error while committing to Screeps: ' + util.inspect(data));
                     }
                 });
