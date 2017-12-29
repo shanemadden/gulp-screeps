@@ -9,7 +9,8 @@
     "email": "pcmulder89@gmail.com"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "2npm": "publish"
   },
   "files": [
     "index.js"
@@ -23,7 +24,8 @@
     "through2": "^2.0.0"
   },
   "devDependencies": {
-    "jshint": "^2.8.0"
+    "jshint": "^2.8.0",
+    "publish": "^0.6.0"
   },
   "bugs": {
     "url": "https://github.com/screepers/gulp-screeps/issues",
