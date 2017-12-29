@@ -1,9 +1,9 @@
 {
   "name": "gulp-screeps",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "A Gulp plugin for commiting code to your Screeps account",
   "license": "MIT",
-  "repository": "git://github.com/pcmulder/gulp-screeps",
+  "repository": "git://github.com/screepers/gulp-screeps",
   "author": {
     "name": "Patrick Mulder",
     "email": "pcmulder89@gmail.com"
@@ -26,8 +26,8 @@
     "jshint": "^2.8.0"
   },
   "bugs": {
-    "url": "https://github.com/pcmulder/gulp-screeps/issues",
-    "email": "pcmulder89@gmail.com"
+    "url": "https://github.com/screepers/gulp-screeps/issues",
+    "email": "ashumann13@gmail.com"
   },
-  "homepage": "https://github.com/timhuijgen/sockjs-wrap"
+  "homepage": "https://github.com/screepers/gulp-screeps"
 }
