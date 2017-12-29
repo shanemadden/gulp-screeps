@@ -35,7 +35,7 @@ module.exports = function (opt) {
     }
 
     if (typeof opt.secure !== 'boolean'){
-        opt.secure = opt.port == 443;
+        opt.secure = opt.port === 443;
     }
 
     if ((typeof opt.email !== 'string' || typeof opt.password !== 'string') && typeof opt.token !== 'string') {
@@ -79,10 +79,14 @@ module.exports = function (opt) {
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
             }
-        }
+        };
         
-        if(opt.email && opt.password) reqOpts.auth = opt.email + ':' + opt.password
-        if(opt.token) reqOpts.headers['x-token'] = opt.token
+        if(opt.email && opt.password) {
+            reqOpts.auth = opt.email + ':' + opt.password;
+        }
+        if(opt.token) {
+            reqOpts.headers['x-token'] = opt.token;
+        }
 
         var req = request(reqOpts,
             function (res) {
@@ -101,7 +105,7 @@ module.exports = function (opt) {
                         if (opt.branch) {
                             msg += ' branch "' + opt.branch + '"';
                         }
-                        if (opt.host != "screeps.com") {
+                        if (opt.host !== "screeps.com") {
                             msg += ' on server "' + opt.host + '"';
                         }
                         msg += '.';
