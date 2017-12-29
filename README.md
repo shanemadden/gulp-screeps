@@ -34,6 +34,7 @@ gulp.task('screeps', function() {
 module.exports = {
     email: 'EMAIL',
     password: 'PASSWORD',
+    token: 'token'
     branch: 'default',
     ptr: false,
     host: 'someprivateserver.com',
@@ -42,8 +43,9 @@ module.exports = {
 };
 ```
 ### Options 
-- email - the email of your account
-- password - the password of your account
+- email - the email of your account (Private Servers Only)
+- password - the password of your account (Private Servers Only)
+- token - the token of your account (Official Server Only) - Get from your screeps account settings
 - branch (optional) - the branch you wish to commit the code to
 - ptr (optional) - use [Public Test Realm](http://support.screeps.com/hc/en-us/articles/205999532-Public-Test-Realm)
 - host (optional) - the url of the host

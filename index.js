@@ -38,7 +38,7 @@ module.exports = function (opt) {
         opt.secure = opt.port == 443;
     }
 
-    if (typeof opt.email !== 'string' || typeof opt.password !== 'string') {
+    if ((typeof opt.email !== 'string' || typeof opt.password !== 'string') && typeof opt.token !== 'string') {
         throw new PluginError(PLUGIN_NAME, 'Please provide account information');
     }
 
@@ -71,16 +71,20 @@ module.exports = function (opt) {
         });
 
         var request = (opt.secure ? https : http).request;
-        var req = request({
-                hostname: opt.host,
-                port: opt.port,
-                path: opt.ptr ? '/ptr/api/user/code' : '/api/user/code',
-                method: 'POST',
-                auth: opt.email + ':' + opt.password,
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            },
+        var reqOpts = {
+            hostname: opt.host,
+            port: opt.port,
+            path: opt.ptr ? '/ptr/api/user/code' : '/api/user/code',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            }
+        }
+        
+        if(opt.email && opt.password) reqOpts.auth = opt.email + ':' + opt.password
+        if(opt.token) reqOpts.headers['x-token'] = opt.token
+
+        var req = request(reqOpts,
             function (res) {
                 res.setEncoding('utf8');
 
