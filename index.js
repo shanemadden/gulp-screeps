@@ -100,7 +100,13 @@ module.exports = function (opt) {
                 res.on('end', function () {
                     data = JSON.parse(data);
                     if (data.ok) {
-                        var msg = 'Committed to Screeps account "' + opt.email + '"';
+                        var msg = 'Committed to Screeps account';
+                        if (opt.email) {
+                            msg += ' "' + opt.email + '"';
+                        }
+                        if (opt.token) {
+                            msg += ' with token';
+                        }
                         if (opt.branch) {
                             msg += ' branch "' + opt.branch + '"';
                         }
