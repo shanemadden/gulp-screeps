@@ -119,7 +119,7 @@ module.exports = function (opt) {
                             var limit = res.headers['x-ratelimit-limit'];
                             var remaining = res.headers['x-ratelimit-remaining'];
                             var reset = res.headers['x-ratelimit-reset'];
-                            msg += '  RateLimiting: (' + remaining + '/' + limit + ' ' + (parseInt(reset) * 1000) - Date.now()} + 'ms to reset)';
+                            msg += '  RateLimiting: (' + remaining + '/' + limit + ' ' + ((parseInt(reset) * 1000) - Date.now()) + 'ms to reset)';
                         }
                         log(msg);
                         cb();
