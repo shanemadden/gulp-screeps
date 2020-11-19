@@ -70,10 +70,11 @@ module.exports = function (opt) {
         });
 
         var request = (opt.secure ? https : http).request;
+        var api = '/api/user/code';
         var reqOpts = {
             hostname: opt.host,
             port: opt.port,
-            path: opt.ptr ? '/ptr/api/user/code' : '/api/user/code',
+            path: opt.path ? opt.path + api : api,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8'
