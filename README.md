@@ -31,23 +31,15 @@ gulp.task('screeps', function() {
 ```
 **credentials.js:**
 
-- Persistent (MMO) World example:
+Persistent (MMO) World example:
 ```js
 module.exports = {
     token: 'TOKEN'
     branch: 'default',
-};
-```
-- Season World example:
-```js
-module.exports = {
-    token: 'TOKEN'
-    branch: 'default',
-    path: '/season'
 };
 ```
 
-- Public Test Realm example:
+Public Test Realm example:
 ```js
 module.exports = {
     token: 'TOKEN'
@@ -56,7 +48,16 @@ module.exports = {
 };
 ```
 
-- Private Server example:
+Season World example:
+```js
+module.exports = {
+    token: 'TOKEN'
+    branch: 'default',
+    path: '/season'
+};
+```
+
+Private Server example:
 ```js
 module.exports = {
     email: 'EMAIL',
@@ -72,7 +73,7 @@ module.exports = {
 - `password` - the password of your account (Private Servers Only)
 - `token` - the token of your account (Official Server Only) - Get from your screeps account settings
 - `branch` (optional) - the branch you wish to commit the code to
-- `path` (optional) - use `/season` for Season World or `/ptr` for [Public Test Realm](http://support.screeps.com/hc/en-us/articles/205999532-Public-Test-Realm)
+- `path` (optional) - use "/season" for Season World or "/ptr" for [Public Test Realm](http://support.screeps.com/hc/en-us/articles/205999532-Public-Test-Realm)
 - `host` (optional) - the url or IP address of the host
 - `port` (optional) - the port of the host
 - `secure` (optional) - if the host is using https instead of http
