@@ -34,7 +34,6 @@ gulp.task('screeps', function() {
 Persistent (MMO) World example:
 ```js
 module.exports = {
-    email: 'EMAIL',
     token: 'AUTH_TOKEN',
     branch: 'default'
 };
@@ -43,7 +42,6 @@ module.exports = {
 Public Test Realm example:
 ```js
 module.exports = {
-    email: 'EMAIL',
     token: 'AUTH_TOKEN',
     branch: 'default',
     path: '/ptr'
@@ -53,7 +51,6 @@ module.exports = {
 Season World example:
 ```js
 module.exports = {
-    email: 'EMAIL',
     token: 'AUTH_TOKEN',
     branch: 'default',
     path: '/season'
