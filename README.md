@@ -34,24 +34,24 @@ gulp.task('screeps', function() {
 Persistent (MMO) World example:
 ```js
 module.exports = {
-    token: 'TOKEN'
-    branch: 'default',
+    token: 'AUTH_TOKEN',
+    branch: 'default'
 };
 ```
 
 Public Test Realm example:
 ```js
 module.exports = {
-    token: 'TOKEN'
+    token: 'AUTH_TOKEN',
     branch: 'default',
-    path: '/ptr',
+    path: '/ptr'
 };
 ```
 
 Season World example:
 ```js
 module.exports = {
-    token: 'TOKEN'
+    token: 'AUTH_TOKEN',
     branch: 'default',
     path: '/season'
 };
@@ -60,8 +60,8 @@ module.exports = {
 Private Server example:
 ```js
 module.exports = {
-    email: 'EMAIL',
-    password: 'PASSWORD'
+    email: 'USERNAME',
+    password: 'PASSWORD',
     branch: 'default',
     host: 'someprivateserver.com',
     port: 21025
