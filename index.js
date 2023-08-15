@@ -87,7 +87,7 @@ module.exports = function (opt) {
 
         var usedMB = usedBytes / 1024 / 1024;
         var usedPercent = 100 * usedBytes / (5 * 1024 * 1024);
-        log('Uploading; will use ' + usedMB.toFixed(2) + ' MiB of 5MiB code size limit (' + usedPercent.toFixed(2) + '%)');
+        log('Uploading; will use ' + usedMB.toFixed(2) + ' MiB of 5 MiB code size limit (' + usedPercent.toFixed(2) + '%)');
 
         var request = (opt.secure ? https : http).request;
         var api = '/api/user/code';
