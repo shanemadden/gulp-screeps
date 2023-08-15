@@ -66,12 +66,7 @@ module.exports = function (opt) {
         var usedBytes = 0;
 
         files.map(function (file) {
-            if (file.path.endsWith('.js')) {
-                var name = path.basename(file.path).replace(/\.js$/,'');
-                var encoded = file.contents.toString('utf-8');
-                usedBytes += encoded.length;
-                modules[name] = encoded;
-            } else if (file.path.endsWith('.wasm')) {
+            if (file.path.endsWith('.wasm')) {
                 var name = path.basename(file.path).replace(/\.wasm$/,'');
                 var encoded = file.contents.toString('base64');
                 // count the size of the binary module after encoding into base64;
@@ -81,12 +76,18 @@ module.exports = function (opt) {
                     binary: encoded
                 };
             } else {
-                log('skipping unsupported file extension: ' + path.basename(file.path))
+                if (!file.path.endsWith('.js')) {
+                    log('unknown file extension, will upload as text: ' + path.basename(file.path))
+                }
+                var name = path.basename(file.path).replace(/\.js$/,'');
+                var encoded = file.contents.toString('utf-8');
+                usedBytes += encoded.length;
+                modules[name] = encoded;
             }
         });
 
         var usedMB = usedBytes / 1024 / 1024;
-        var usedPercent = 100 * usedBytes / (5 * 1024 * 1024);
+        var usedPercent = 100 * usedMB / 5;
         log('Uploading; will use ' + usedMB.toFixed(2) + ' MiB of 5 MiB code size limit (' + usedPercent.toFixed(2) + '%)');
 
         var request = (opt.secure ? https : http).request;
