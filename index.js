@@ -63,11 +63,31 @@ module.exports = function (opt) {
     }
 
     function endStream(cb) {
+        var usedBytes = 0;
 
         files.map(function (file) {
-            var name = path.basename(file.path).replace(/\.js$/,'');
-            modules[name] = file.contents.toString('utf-8');
+            if (file.path.endsWith('.js')) {
+                var name = path.basename(file.path).replace(/\.js$/,'');
+                var encoded = file.contents.toString('utf-8');
+                usedBytes += encoded.length;
+                modules[name] = encoded;
+            } else if (file.path.endsWith('.wasm')) {
+                var name = path.basename(file.path).replace(/\.wasm$/,'');
+                var encoded = file.contents.toString('base64');
+                // count the size of the binary module after encoding into base64;
+                // that's what is checked against the code size limit
+                usedBytes += encoded.length;
+                modules[name] = {
+                    binary: encoded
+                };
+            } else {
+                log('skipping unsupported file extension: ' + path.basename(file.path))
+            }
         });
+
+        var usedMB = usedBytes / 1024 / 1024;
+        var usedPercent = 100 * usedBytes / (5 * 1024 * 1024);
+        log('Uploading; will use ' + usedMB.toFixed(2) + ' MiB of 5MiB code size limit (' + usedPercent.toFixed(2) + '%)');
 
         var request = (opt.secure ? https : http).request;
         var api = '/api/user/code';
